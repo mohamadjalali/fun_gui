@@ -24,8 +24,8 @@ class Database:
         self.conn.commit()
 
     def update(self, id, part, customer, retailer, price):
-        self.cur.execute("UPDATE parts set part = ?, customer = ?, retailer = ?, price = ? \
-        WHERE id = ?", (part, customer, retailer, price, id))
+        self.cur.execute("UPDATE parts set part = ?, customer = ?, retailer = ?, \
+        price = ? WHERE id = ?", (part, customer, retailer, price, id))
         self.conn.commit()
 
     def __del__(self):
