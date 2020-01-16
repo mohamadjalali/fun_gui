@@ -27,8 +27,8 @@ def add_item():
     populate_list()
 
 
-def select_item(event):
-    # Note here that Tkinter passes an event object to select_item()
+def select_Item(event):
+    # Note here that Tkinter passes an event object to select_Item()
     global select_item
     index = parts_list.curselection()
     if not index:
@@ -49,10 +49,12 @@ def select_item(event):
 
 def remove_item():
     db.remove(select_item[0])
+    clear_text()
     populate_list()
 
 def update_item():
     db.update(select_item[0], part_text.get(), customer_text.get(), retailer_text.get(), price_text.get())
+    clear_text()
     populate_list()
 
 def clear_text():
@@ -65,6 +67,7 @@ def clear_text():
 
 # Create window object
 app = Tk()
+
 
 # Part
 part_text  = StringVar()
@@ -107,7 +110,7 @@ parts_list.configure(yscrollcommand=scrollbar.set)
 scrollbar.configure(command=parts_list.yview)
 
 # Bind select
-parts_list.bind('<<ListboxSelect>>', select_item)
+parts_list.bind('<<ListboxSelect>>', select_Item)
 
 # Buttons
 add_btn = Button(app, text='Add Part', width=12, command=add_item)
